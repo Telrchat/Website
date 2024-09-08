@@ -26,6 +26,11 @@ import {
 } from "@/components/ui/tooltip";
 import config from "../../../richtpl.config";
 
+export function GetTheme() {
+  const { theme } = useTheme();
+  return theme;
+}
+
 // ModeToggle types
 export interface ModeButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {

@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Next.js Rich Template",
-    "description": "This project is a Next.js template aimed at providing a robust starting point for building modern web applications. It comes with pre-configured localization support, theme toggling, and various other features to streamline development."
+    "title": "Telrchat",
+    "description": "This chat service encrypts messages before sending them. Even if the content is leaked externally, it cannot be viewed without decrypting the information. Thanks to this feature, we have achieved a highly confidential private chat service."
   },
   "PageError": {
     "title": "Unknown error",
@@ -21,56 +21,8 @@
     "Language": "Language",
     "Select a language": "Select a language"
   },
-  "PageHome": {
-    "Get started by editing": "Get started by editing",
-    "By": "By",
-    "Docs": "Docs",
-    "Find in-depth information about Next&#46;js features and API&#46;": "Find in-depth information about Next.js features and API.",
-    "Learn": "Learn",
-    "Learn about Next&#46;js in an interactive course with quizzes!": "Learn about Next.js in an interactive course with quizzes!",
-    "Templates": "Templates",
-    "Explore starter templates for Next&#46;js&#46;": "Explore starter templates for Next.js.",
-    "Deploy": "Deploy",
-    "Instantly deploy your Next&#46;js site to a shareable URL with Vercel&#46;": "Instantly deploy your Next.js site to a shareable URL with Vercel."
-  },
-  "PageAbout": {
-    "About This Project": {
-      "title": "About This Project",
-      "description": "This project is a Next.js template aimed at providing a robust starting point for building modern web applications. It comes with pre-configured localization support, theme toggling, and various other features to streamline development."
-    },
-    "Project Details": {
-      "title": "Project Details",
-      "description": "This template is designed to help developers quickly set up a new Next.js project with best practices and commonly needed features. It includes:"
-    },
-    "Localization with next-intl": "Localization with next-intl",
-    "Dark mode support with next-themes": "Dark mode support with next-themes",
-    "Responsive design with Tailwind CSS": "Responsive design with Tailwind CSS",
-    "Optimized performance with modern web standards": "Optimized performance with modern web standards",
-    "Contributors": {
-      "title": "Contributors",
-      "description": "This project wouldn't be possible without the contributions of the following individuals:"
-    },
-    "Project Lead": "Project Lead",
-    "Modules & Packages Used": "Modules & Packages Used",
-    "Acknowledgments": {
-      "title": "Acknowledgments",
-      "description": "We would like to thank the Next.js community and the various open-source projects that have inspired and supported this template."
-    },
-    "Call for Contributions": {
-      "title": "Call for Contributions",
-      "description": "The documentation for this template is not comprehensive, and we welcome anyone who is willing to help improve it. Contributors will be acknowledged on this page."
-    },
-    "Contact": {
-      "title": "Contact",
-      "For any inquiries or contributions, please reach out to us via our": {
-        "text_1": "For any inquiries or contributions, please reach out to us via our",
-        "text_2": "GitHub repository",
-        "text_3": "."
-      }
-    }
-  },
   "Footer": {
-    "footerText": "Copyright © 2024 Fun117. All rights reserved.",
+    "footerText": "Copyright © 2024 Telrchat. All rights reserved.",
     "items": {
       "Resources": "Resources",
       "Docs": "Docs",
@@ -86,11 +38,111 @@
       "Releases": "Releases",
       "Telemetry": "Telemetry",
       "Governance": "Governance",
-      "About Vercel": "About Vercel",
+      "About Telrchat": "About Telrchat",
       "Next&#46;js + Vercel": "Next.js + Vercel",
       "Open Source Software": "Open Source Software"
     }
   },
+  "SearchCommand": {
+    "Search website&#46;&#46;&#46;": "Search website...",
+    "Search&#46;&#46;&#46;": "Search...",
+    "No results found&#46;": "No results found.",
+    "Type a command or search&#46;&#46;&#46;": "Type a command or search...",
+    "items": {
+      "Pages": "Pages",
+      "Home": "Home",
+      "Timeline": "Timeline",
+      "App": "App"
+    }
+  },
+  "Pages": {
+    "Auth": {
+      "lang": "enUS",
+      "Return to Home": "Return to Home",
+      "Sign in to Telrchat": "Sign in to Telrchat",
+      "Welcome back! Please sign in to continue": "Welcome back! Please sign in to continue",
+      "or": "or",
+      "Email address": "Email address",
+      "Continue": "Continue",
+      "Don't have an account? Sign up": "Don't have an account? Sign up",
+      "Use another method": "Use another method",
+      "Facing issues? You can use any of these methods to sign in&#46;": "Facing issues? You can use any of these methods to sign in&#46;",
+      "Email code": "Email code",
+      "Password": "Password",
+      "Go back": "Go back",
+      "Check your email": "Check your email",
+      "Enter the verification code sent to your email": "Enter the verification code sent to your email",
+      "Welcome back": "Welcome back",
+      "Email verification code": "Email verification code",
+      "Didn't receive a code? Resend": "Didn't receive a code? Resend",
+      "Create your account": "Create your account",
+      "Welcome! Please fill in the details to get started&#46;": "Welcome! Please fill in the details to get started&#46;",
+      "Already have an account? Sign in": "Already have an account? Sign in",
+      "Continue registration": "Continue registration",
+      "Username": "Username",
+      "Verify your email": "Verify your email",
+      "Use the verification link sent to your email address": " Use the verification link sent to your email address"
+    },
+    "Home": {
+      "HeroTitle": {
+        "title": {
+          "1": "Realize a Chat App with Encrypted and ",
+          "2": "Highly Confidential Messages"
+        },
+        "subtitle": "Messages are encrypted and automatically deleted within 24 hours."
+      },
+
+      "HeroSubContent": {
+        "message": "This chat service encrypts messages before sending them. Even if the content is leaked externally, it cannot be viewed without decrypting the information. Thanks to this feature, we have achieved a highly confidential private chat service.",
+        "sub": "Telrchat Developer"
+      },
+
+      "HeroGoogleGeminiEffect": {
+        "title": "Private Chat App",
+        "description": "Messages are encrypted before being sent, protecting the privacy of both the sender and receiver.",
+        "badge": "Encrypt your messages"
+      },
+
+      "HeroTimeline": {
+        "title": "Journey Timeline",
+        "description": "It has been a year since Telrchat began. Below is the timeline of this app's journey.",
+        "2024": {
+          "1": "The development of Telrchat was started by a single developer."
+        }
+      },
+
+      "BackgroundBeamsWithCollision": {
+        "1": "Want to chat casually?",
+        "2": "Start using Telrchat now."
+      },
+
+      "Accordions": {
+        "length": "4",
+        "1": {
+          "title": "Does it cost money to use?",
+          "description": "No, you can use it completely for free."
+        },
+        "2": {
+          "title": "When will the sent messages be deleted?",
+          "description": "Messages will be automatically deleted within 24 hours of being sent."
+        },
+        "3": {
+          "title": "Do I need to register an account?",
+          "description": "Yes, you need to register and log in to an account."
+        },
+        "4": {
+          "title": "Are there any usage restrictions?",
+          "description": "Yes, while there are no limits on messages, there is a limit on the number of groups you can create."
+        }
+      }
+    },
+    "App": {
+      "Metadata": {
+        "title": "Web Edition"
+      }
+    }
+  },
   "Home": "Home",
-  "About": "About"
+  "Timeline": "Timeline",
+  "App": "App"
 }

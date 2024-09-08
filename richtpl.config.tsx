@@ -1,4 +1,12 @@
+import BrandLogo from "@/components/ui/logo";
 import Config from "@/types/richtpl.config";
+import {
+  Book,
+  ChartGantt,
+  Home,
+  LayoutGrid,
+  MessageCircleQuestion,
+} from "lucide-react";
 
 /**
  * Site configuration object.
@@ -6,20 +14,20 @@ import Config from "@/types/richtpl.config";
  */
 const config: Config = {
   // Tagline for the site
-  tagline: "Next.js Template",
+  tagline: "Telrchat",
 
   // URL to the favicon
   favicon: "/favicon.ico",
 
   // Production URL of the site
-  url: "https://nextjs-rich-tpl.vercel.app",
+  url: "https://telrchat.vercel.app",
 
   // Base URL pathname (for GitHub Pages deployment)
   baseUrl: "/",
 
   // GitHub deployment configuration
-  organizationName: "fun117", // GitHub organization/user name
-  projectName: "nextjs-rich-tpl", // GitHub repository name
+  organizationName: "Telrchat", // GitHub organization/user name
+  projectName: "Website", // GitHub repository name
 
   // Internationalization (i18n) configuration
   i18n: {
@@ -51,38 +59,64 @@ const config: Config = {
       selectSwitch: true, // Whether to allow switching color modes
     },
     // URL to the social card image (replace with your project's image)
-    image: "/image/upload/front/nextjs/twitter-card.png",
+    image: "/brand/telrchat-high-resolution-logo.png",
     // Metadata for the site
     metadata: {
-      keywords: [
-        "Template",
-        "i18n",
-        "template",
-        "Next.js",
-        "autoprefixer",
-        "rich",
-        "tailwindcss",
-        "framer-motion",
-        "next-themes",
-        "vercel-hosting",
-        "next-intl",
-        "lucide-icons",
-      ],
-      authors: { name: "Fun117", url: "https://fun117.dev" },
-      creator: "Fun117",
+      keywords: ["private", "Chat", "WebApp", "free"],
+      authors: { name: "Telrchat", url: "https://github.com/Telrchat" },
+      creator: "Telrchat",
       icons: "/favicon.ico",
       generator: "Next.js",
       publisher: "Vercel",
       robots: "follow, index",
-      metadataBase: new URL("https://nextjs-rich-tpl.vercel.app"),
+      metadataBase: new URL("https://telrchat.vercel.app"),
     },
+    SearchCommand: [
+      {
+        label: "Pages",
+        i18n_text: true,
+        items: [
+          {
+            label: "Home",
+            icon: <Home />,
+            href: "/",
+            i18n_text: true,
+          },
+          {
+            label: "Timeline",
+            icon: <ChartGantt />,
+            href: "/#timeline",
+            i18n_text: true,
+          },
+          {
+            label: "Q&A",
+            icon: <MessageCircleQuestion />,
+            href: "/#c:qa",
+            i18n_text: false,
+          },
+          {
+            label: "App",
+            icon: <LayoutGrid />,
+            href: "/app",
+            i18n_text: true,
+          },
+        ],
+      },
+    ],
     // Header configuration
     header: {
       // Title for the header
-      title: "Richtpl",
-      // Logo configuration
+      title: "Telrchat",
       logo: {
-        type: "Vercel&Next.js", // Type of logo
+        content: (
+          <BrandLogo
+            src="/brand/svg/icon-no-background.svg"
+            alt="Telrchat"
+            width={40}
+            height={40}
+            priority
+          />
+        ),
       },
       // Navigation items in the header
       items: {
@@ -90,35 +124,53 @@ const config: Config = {
         left: [
           {
             label: "Home", // Label for the item
-            to: "/", // Internal URL path
-            i18n_link: true, // Whether to include locale prefix in the URL
+            href: "/", // Internal URL path
             i18n_text: true, // Whether to include locale prefix in the Text
           },
           {
-            label: "About", // Label for the item
-            to: "/about", // Internal URL path
-            i18n_link: true, // Whether to include locale prefix in the URL
+            label: "Timeline", // Label for the item
+            href: "/#c:timeline", // Internal URL path
+            i18n_text: true, // Whether to include locale prefix in the Text
+          },
+          {
+            label: "Q&A", // Label for the item
+            href: "/#c:qa", // Internal URL path
+            i18n_text: false, // Whether to include locale prefix in the Text
+          },
+          {
+            label: "App", // Label for the item
+            href: "/app", // Internal URL path
             i18n_text: true, // Whether to include locale prefix in the Text
           },
         ],
-        project: {
-          repository: "block", // Display the repository link in the header
-        },
       },
+      hiddenPages: ["/auth/*", "/app"],
     },
     // Footer configuration
     footer: {
       // Title for the footer
-      title: "Richtpl",
+      title: "Telrchat",
       // Logo configuration
       logo: {
-        href: "https://vercel.com/home?utm_source=next-site&utm_medium=footer&utm_campaign=next-website",
-        type: "Vercel", // Type of logo
+        content: (
+          <BrandLogo
+            src="/brand/telrchat-high-resolution-logo-transparent-dark.png"
+            alt="Telrchat"
+            width={150}
+            height={50}
+            dynamicImage={{
+              light:
+                "/brand/telrchat-high-resolution-logo-transparent-dark.png",
+              dark: "/brand/telrchat-high-resolution-logo-transparent-light.png",
+            }}
+            className="w-36 h-auto"
+          />
+        ),
       },
       // Social links configuration
       social: {
         github: true, // Whether to include a GitHub link
-        twitter: "Fun_117", // Twitter handle
+        twitter: "Telrchat", // Twitter handle
       },
       footerText: {
         i18n: true, // Whether the footer text should be localized
@@ -215,34 +267,23 @@ const config: Config = {
           ],
         },
         {
-          title: "About Vercel",
+          title: "About Telrchat",
           title_i18n: true,
           contents: [
             {
-              label: "Next&#46;js + Vercel",
-              href: "https://vercel.com/solutions/nextjs?utm_source=next-site&utm_medium=footer&utm_campaign=home",
-              target: "_blank",
-              i18n_text: true,
-            },
-            {
-              label: "Open Source Software",
-              href: "https://vercel.com/oss?utm_source=next-site&utm_medium=footer&utm_campaign=home",
-              target: "_blank",
-              i18n_text: true,
-            },
-            {
               label: "GitHub",
-              href: "https://github.com/vercel",
+              href: "https://github.com/telrchat",
               target: "_blank",
             },
             {
               label: "X",
-              href: "https://twitter.com/vercel",
+              href: "https://twitter.com/telrchat",
               target: "_blank",
             },
           ],
         },
       ],
+      hiddenPages: ["/auth/*", "/app"],
     },
     // Sitemap Configuration
     sitemap: {
@@ -250,6 +291,8 @@ const config: Config = {
         "error", // Directory for error pages
         "not-found", // Directory for 404 pages
         "[...rest]", // Directory for [...rest] pages
+        "auth",
+        "app",
       ],
     },
   },

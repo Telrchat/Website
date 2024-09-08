@@ -1,13 +1,13 @@
-"use client";
+import { useTranslations } from "next-intl";
 
-import Error from "next/error";
+import type { Metadata } from "next";
+import NotFound from "@/components/pages/not-found";
 
-export default function NotFound() {
-  return (
-    <html>
-      <body>
-        <Error statusCode={404} />
-      </body>
-    </html>
-  );
+export const metadata: Metadata = {
+  title: "Page not found",
+};
+
+export default function NotFoundPage() {
+  const t = useTranslations("PageNotFound");
+  return <NotFound title={t("title")} />;
 }

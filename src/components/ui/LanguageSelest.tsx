@@ -1,8 +1,7 @@
 "use client";
 
-import useLocalePathname from "@/hooks/useLocalePathname";
 import { useLocale, useTranslations } from "next-intl";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import config from "../../../richtpl.config";
 
 import {
@@ -16,23 +15,24 @@ import {
 } from "@/components/ui/select";
 import { useRouter } from "next/navigation";
 import { Globe } from "lucide-react";
+import { Locale, setUserLocale } from "@/services/locale";
 
 function LanguageSelest() {
-  const router = useRouter();
-  const pathname = useLocalePathname();
   const t = useTranslations("Languages");
   const lang = useLocale();
 
-  const [selectLocale, setSelectLocale] = useState<string>(
-    lang || config.i18n.defaultLocale
-  );
+  const router = useRouter();
 
-  useEffect(() => {
-    const handleLocaleChange = (newLocale: string) => {
-      router.push(`/${newLocale}/${pathname}`);
-    };
-    handleLocaleChange(selectLocale);
-  }, [selectLocale]);
+  const [isPending, startTransition] = useTransition();
+
+  function onChange(value: string) {
+    const locale = value as Locale;
+    startTransition(() => {
+      setUserLocale(locale);
+      router.refresh();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
   if (!config.i18n.selectButton) {
     return <></>;
@@ -41,7 +41,7 @@ function LanguageSelest() {
   return (
     <Select
       defaultValue={lang || config.i18n.defaultLocale}
-      onValueChange={setSelectLocale}
+      onValueChange={onChange}
     >
       <SelectTrigger
         aria-label={t("Select a language")}

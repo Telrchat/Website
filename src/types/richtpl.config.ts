@@ -22,6 +22,21 @@ type localeConfig = {
   path: string; // URL path prefix for the locale
 };
 
+type SearchCommand = {
+  label: string;
+  i18n_text?: boolean;
+  items: SearchCommandItem[];
+};
+
+type SearchCommandItem = {
+  label: string; // Label for the item
+  icon: React.ReactNode; // Icon for the item
+  action?: () => void; // Action to be performed when the item is clicked
+  href?: string; // URL for the item
+  target?: HTMLAttributeAnchorTarget; // Target attribute for the link (optional)
+  i18n_text?: boolean; // Whether the text should be localized
+};
+
 /**
  * Header configuration type.
  * Defines title, logo, and navigation items for the header.
@@ -40,6 +55,7 @@ type Header = {
       repository?: "block" | "hidden"; // Visibility of the repository link
     };
   };
+  hiddenPages?: string[];
 };
 
 /**
@@ -72,6 +88,7 @@ type Footer = {
     title_i18n?: boolean; // Whether the title should be localized
     contents?: NavItem[]; // Array of navigation items in the section
   }[];
+  hiddenPages?: string[];
 };
 
 /**
@@ -85,6 +102,7 @@ type ThemeConfig = {
   };
   image?: string; // Social card image URL
   metadata?: Metadata; // Metadata for the site
+  SearchCommand?: SearchCommand[];
   header?: Header; // Header configuration
   footer?: Footer; // Footer configuration
   sitemap?: {
@@ -99,10 +117,8 @@ type ThemeConfig = {
  */
 type NavItem = {
   label: string; // Display label for the navigation item
-  to?: string; // Internal URL path
-  href?: string; // External URL
+  href: string; // External URL
   target?: HTMLAttributeAnchorTarget; // Link target attribute
-  i18n_link?: boolean; // Whether to include locale prefix in the URL
   i18n_text?: boolean; // Whether the text should be localized
 };
 

@@ -1,27 +1,20 @@
 // website/src/middleware.ts
 
-import createMiddleware from "next-intl/middleware";
-import { locales, localePrefix, pathnames } from "@/components/provider/nav";
-
-import richtplConfig from "../richtpl.config";
 import { NextRequest, NextResponse } from "next/server";
 
-// 既存のミドルウェアを作成
-const intlMiddleware = createMiddleware({
-  // A list of all locales that are supported
-  locales,
-  localePrefix,
-  pathnames,
-  // Used when no locale matches
-  defaultLocale: richtplConfig.i18n.defaultLocale,
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+
+const isProtectedRoute = createRouteMatcher(["/app(.*)"]);
+
+export default clerkMiddleware((auth, req) => {
+  if (isProtectedRoute(req)) auth().protect();
+  return middleware(req);
 });
 
-export function middleware(request: NextRequest) {
+function middleware(request: NextRequest) {
   // Add a new header x-current-path which passes the path to downstream components
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-pathname", request.nextUrl.pathname);
-
-  // console.log(requestHeaders);
 
   const response = NextResponse.next({
     request: {
@@ -30,19 +23,14 @@ export function middleware(request: NextRequest) {
     },
   });
 
-  // // ヘッダー情報をログに出力
-  // const headersList = request.headers;
-  // console.log("\n\n ");
-  // headersList.forEach((value, key) => {
-  //   console.log(`${key}: ${value}`);
-  // });
-  // console.log("\n\n ");
-
-  // 既存のintlミドルウェアを呼び出す
-  return intlMiddleware(request) || response;
+  return response;
 }
 
 export const config = {
-  // Match only internationalized pathnames
-  matcher: ["/", `/(ja|en)/:path*`],
+  matcher: [
+    // Skip Next.js internals and all static files, unless found in search params
+    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+    // Always run for API routes
+    "/(api|trpc)(.*)",
+  ],
 };

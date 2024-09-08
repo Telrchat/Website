@@ -2,25 +2,30 @@
 
 import config from "../../../richtpl.config";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { motion, useCycle } from "framer-motion";
+import ClerkUserButton from "../provider/clerk";
 
+import { useLocale, useTranslations } from "next-intl";
 import { FaGithub } from "react-icons/fa";
 
 import { TLink } from "@/components/ui/Tcomps";
 import { LogoVercel_Nextjs } from "@/components/ui/vercel_nextjs";
 import { ModeToggle } from "@/components/ui/ModeToggle";
 import { MenuToggle } from "@/components/ui/MenuToggle";
-import { useLocale, useTranslations } from "next-intl";
 import LanguageSelest from "../ui/LanguageSelest";
 import { Button } from "../ui/button";
-import Link from "next/link";
+import { Skeleton } from "../ui/skeleton";
+import { ConfigDelElementsCheck } from "../provider/del";
+import { SearchCommandDialog } from "../ui/command-search";
 
 function Header() {
   const t = useTranslations("Languages");
   const lang = useLocale();
-
   const [isOpen, toggleOpen] = useCycle(false, true);
+
+  ConfigDelElementsCheck();
 
   useEffect(() => {
     if (isOpen) {
@@ -79,8 +84,6 @@ function Header() {
               key={idx}
               target={link.target}
               href={link.href}
-              to={link.to}
-              i18n_link={link.i18n_link || false}
               i18n_text={link.i18n_text || false}
               onClick={() => toggleOpen()}
             >
@@ -97,8 +100,6 @@ function Header() {
             key={idx}
             target={link.target}
             href={link.href}
-            to={link.to}
-            i18n_link={link.i18n_link || false}
             i18n_text={link.i18n_text || false}
             onClick={() => toggleOpen()}
           >
@@ -111,13 +112,18 @@ function Header() {
 
   return (
     <>
-      <header className="bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(0,0,0,.8)] sticky top-0 z-[1000] flex flex-col justify-around items-center w-full h-16 px-6 border-b border-neutral-200 dark:border-neutral-800 shadow-md backdrop-blur-sm">
-        <nav className="relative flex items-center w-full max-w-[var(--ds-page-width)]">
+      <header
+        id="element-header"
+        className="bg-[rgba(255,255,255,0.8)] dark:bg-[rgba(0,0,0,0.8)] sticky top-0 z-[49] flex flex-col justify-center items-center w-full h-16 px-6 border-b border-neutral-50 dark:border-neutral-950 shadow-sm backdrop-blur-md"
+        suppressHydrationWarning
+      >
+        <nav className="relative flex justify-center items-center w-full max-w-[var(--ds-page-width)] my-auto">
           <div className="flex lg:hidden justify-between items-center w-full">
             <div className="flex gap-2">
               <Logo />
             </div>
             <div className="flex items-center gap-1">
+              <SearchCommandDialog />
               {config.themeConfig.header?.items?.project?.repository ===
                 "block" && (
                 <Link
@@ -142,13 +148,13 @@ function Header() {
               </motion.div>
             </div>
           </div>
-          <div className="hidden lg:flex items-center gap-6 w-full">
+          <div className="hidden lg:flex items-center gap-6 w-auto mr-auto">
             <div className="flex gap-2 mr-5">
               <Logo />
             </div>
             <NavItems type="left" />
           </div>
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3 w-fit">
             <NavItems type="right" />
             {config.themeConfig.header?.items?.project?.repository ===
               "block" && (
@@ -165,14 +171,18 @@ function Header() {
                 </Button>
               </Link>
             )}
+            <SearchCommandDialog />
             <ModeToggle />
+            <Suspense fallback={<Skeleton className="w-7 h-7 rounded-full" />}>
+              <ClerkUserButton />
+            </Suspense>
           </div>
         </nav>
       </header>
       <div
         className={`${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } fixed lg:hidden bottom-0 left-0 z-50 w-full h-[calc(100dvh-64px)] bg-background text-foreground transition-all duration-300 ease-in-out`}
+        } fixed lg:hidden bottom-0 left-0 z-[49] w-full h-[calc(100dvh-64px)] bg-background text-foreground transition-all duration-300 ease-in-out`}
       >
         <nav className="flex flex-col justify-between items-start gap-3 w-full h-full p-6">
           <div className="flex flex-col justify-between items-start gap-3 w-full h-full">
@@ -181,9 +191,16 @@ function Header() {
             </div>
             <div className="flex flex-col justify-start items-start gap-3 w-full">
               <NavItems type="right" />
-              <div className="flex justify-start items-center gap-3 w-full mt-2">
-                {config.themeConfig.colorMode.selectSwitch && <ModeToggle />}
-                <LanguageSelest />
+              <div className="flex justify-between items-center gap-3 w-full mt-2">
+                <div className="flex gap-3">
+                  <LanguageSelest />
+                  {config.themeConfig.colorMode.selectSwitch && <ModeToggle />}
+                </div>
+                <Suspense
+                  fallback={<Skeleton className="w-7 h-7 rounded-full" />}
+                >
+                  <ClerkUserButton />
+                </Suspense>
               </div>
             </div>
           </div>

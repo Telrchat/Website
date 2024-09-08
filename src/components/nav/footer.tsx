@@ -5,15 +5,15 @@ import React from "react";
 import config from "../../../richtpl.config";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 import LanguageSelest from "../ui/LanguageSelest";
-import { TLink } from "../ui/Tcomps";
 import { useTranslations } from "next-intl";
+import { TLink } from "../ui/Tcomps";
 
 function Footer() {
   const t = useTranslations("Footer");
 
   function Logo() {
     return (
-      <>
+      <div>
         {config.themeConfig.footer?.logo?.type === "Vercel" ? (
           <>
             <svg
@@ -26,7 +26,7 @@ function Footer() {
             <span className="hidden">Vercel</span>
           </>
         ) : (
-          config.themeConfig.footer?.logo?.content || (
+          <div>{config.themeConfig.footer?.logo?.content}</div> || (
             <h1 className="text-2xl font-bold">
               {config.themeConfig.footer?.logo?.i18n
                 ? t(config.themeConfig.footer?.title)
@@ -34,7 +34,7 @@ function Footer() {
             </h1>
           )
         )}
-      </>
+      </div>
     );
   }
 
@@ -69,7 +69,11 @@ function Footer() {
   }
 
   return (
-    <footer className="w-full mx-auto overflow-hidden border-t border-t-neutral-200 dark:border-t-neutral-800 text-neutral-500 dark:text-neutral-400">
+    <footer
+      id="element-footer"
+      className="w-full mx-auto overflow-hidden border-t border-t-neutral-200 dark:border-t-neutral-950 text-neutral-500 dark:text-neutral-400"
+      suppressHydrationWarning
+    >
       <div className="max-w-full w-[calc(1200px+calc(2*24px))] mx-auto px-6">
         <div className="min-h-[400px] py-9">
           <div className="grid gap-8 grid-cols-[repeat(auto-fill,minmax(140px,1fr))] lg:flex flex-wrap justify-between">
@@ -99,8 +103,6 @@ function Footer() {
                     key={idx2}
                     target={link.target}
                     href={link.href}
-                    to={link.to}
-                    i18n_link={link.i18n_link || false}
                     i18n_text={link.i18n_text || false}
                     className="text-sm font-base w-fit mb-3 hover:text-neutral-800 dark:hover:text-neutral-200 transition-all duration-300 ease-in-out"
                     i18n_path="Footer.items"
