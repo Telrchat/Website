@@ -1,4 +1,4 @@
-import { Metadata, ResolvingMetadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 
 import { SignInButton } from "@clerk/nextjs";

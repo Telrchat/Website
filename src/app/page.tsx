@@ -73,7 +73,7 @@ export default async function Home() {
               src="/chat/hand-drawn-chat.png"
               alt="fun117"
             />
-            <AvatarFallback>FN</AvatarFallback>
+            <AvatarFallback className="max-w-[400px] h-[800px]">FN</AvatarFallback>
           </Avatar>
           // <Image
           //   src={`/chat/hand-drawn-chat.png`}

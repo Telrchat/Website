@@ -57,6 +57,9 @@
   },
   "Pages": {
     "Auth": {
+      "Metadata": {
+        "title": "Auth"
+      },
       "lang": "enUS",
       "Return to Home": "Return to Home",
       "Sign in to Telrchat": "Sign in to Telrchat",

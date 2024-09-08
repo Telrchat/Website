@@ -57,6 +57,9 @@
   },
   "Pages": {
     "Auth": {
+      "Metadata": {
+        "title": "認証"
+      },
       "lang": "jaJP",
       "Return to Home": "ホームに戻る",
       "Sign in to Telrchat": "Telrchat にサインイン",
