@@ -8,7 +8,7 @@ export async function generateMetadata(
   const t = await getTranslations({ lang, namespace: "Pages.Auth.Metadata" });
 
   return {
-    title: t("title"),
+    title: `${t("title")}`,
   };
 }
 

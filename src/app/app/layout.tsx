@@ -21,7 +21,7 @@ export async function generateMetadata(
   const t = await getTranslations({ lang, namespace: "Pages.App.Metadata" });
 
   return {
-    title: t("title"),
+    title: `${t("title")}`,
   };
 }
 
