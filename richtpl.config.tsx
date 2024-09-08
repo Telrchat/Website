@@ -85,7 +85,7 @@ const config: Config = {
           {
             label: "Timeline",
             icon: <ChartGantt />,
-            href: "/#timeline",
+            href: "/#c:timeline",
             i18n_text: true,
           },
           {
