@@ -1,4 +1,4 @@
-import type { Metadata, ResolvingMetadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 
 export async function generateMetadata(

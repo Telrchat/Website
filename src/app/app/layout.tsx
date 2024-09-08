@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import type { Metadata, ResolvingMetadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -13,6 +13,17 @@ import { getLocale, getMessages, getTranslations } from "next-intl/server";
 
 // ui
 import LoaderRo13 from "@/components/ui/loaderro13";
+
+export async function generateMetadata(
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const lang = await getLocale();
+  const t = await getTranslations({ lang, namespace: "Pages.App.Metadata" });
+
+  return {
+    title: t("title"),
+  };
+}
 
 export default async function LocaleLayout({
   children,

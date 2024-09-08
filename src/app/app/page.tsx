@@ -1,6 +1,3 @@
-import type { Metadata, ResolvingMetadata } from "next";
-import { getLocale, getTranslations } from "next-intl/server";
-
 import { SignInButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 
@@ -17,17 +14,6 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import OrganizationSwitch from "./OrganizationSwitch";
-
-export async function generateMetadata(
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  const lang = await getLocale();
-  const t = await getTranslations({ lang, namespace: "Pages.App.Metadata" });
-
-  return {
-    title: t("title"),
-  };
-}
 
 export default async function Home() {
   const user = await currentUser();
