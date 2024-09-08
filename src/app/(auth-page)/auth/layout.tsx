@@ -1,9 +1,7 @@
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 
-export async function generateMetadata(
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   const lang = await getLocale();
   const t = await getTranslations({ lang, namespace: "Pages.Auth.Metadata" });
 
