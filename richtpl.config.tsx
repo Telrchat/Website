@@ -20,7 +20,7 @@ const config: Config = {
   favicon: "/favicon.ico",
 
   // Production URL of the site
-  url: "https://telrchat.vercel.app",
+  url: "https://telrchat.netlify.app",
 
   // Base URL pathname (for GitHub Pages deployment)
   baseUrl: "/",
@@ -69,7 +69,7 @@ const config: Config = {
       generator: "Next.js",
       publisher: "Vercel",
       robots: "follow, index",
-      metadataBase: new URL("https://telrchat.vercel.app"),
+      metadataBase: new URL("https://telrchat.netlify.app"),
     },
     SearchCommand: [
       {
