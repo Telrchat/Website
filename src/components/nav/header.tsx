@@ -123,7 +123,7 @@ function Header() {
               <Logo />
             </div>
             <div className="flex items-center gap-1">
-              <SearchCommandDialog />
+            <SearchCommandDialog maxWidth={1024} />
               {config.themeConfig.header?.items?.project?.repository ===
                 "block" && (
                 <Link
@@ -171,7 +171,7 @@ function Header() {
                 </Button>
               </Link>
             )}
-            <SearchCommandDialog />
+            <SearchCommandDialog minWidth={1024} />
             <ModeToggle />
             <Suspense fallback={<Skeleton className="w-7 h-7 rounded-full" />}>
               <ClerkUserButton />

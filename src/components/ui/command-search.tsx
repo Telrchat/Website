@@ -27,22 +27,26 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { DialogTitle } from "./dialog";
 
-export function SearchCommandDialog() {
-  const t = useTranslations("SearchCommand");
 
+export function SearchCommandDialog({ minWidth, maxWidth }: { minWidth?: number, maxWidth?: number}) {
+  const t = useTranslations("SearchCommand");
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
+      const width = window.innerWidth;
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen((open) => !open);
+        if ((minWidth === undefined || width >= minWidth) &&
+            (maxWidth === undefined || width <= maxWidth)) {
+          e.preventDefault();
+          setOpen((open) => !open);
+        }
       }
     };
 
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, []);
+  }, [minWidth, maxWidth]);
 
   return (
     <>
