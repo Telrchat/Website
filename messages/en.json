@@ -84,7 +84,9 @@
       "Continue registration": "Continue registration",
       "Username": "Username",
       "Verify your email": "Verify your email",
-      "Use the verification link sent to your email address": " Use the verification link sent to your email address"
+      "Use the verification link sent to your email address": " Use the verification link sent to your email address",
+      "Sign out": "Sign out",
+      "Sign up": "Sign up"
     },
     "Home": {
       "HeroTitle": {

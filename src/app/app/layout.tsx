@@ -13,13 +13,21 @@ import { getLocale, getMessages, getTranslations } from "next-intl/server";
 
 // ui
 import LoaderRo13 from "@/components/ui/loaderro13";
+import { AppSidebar } from "@/components/nav/sidebar";
 
 export async function generateMetadata(): Promise<Metadata> {
   const lang = await getLocale();
-  const t = await getTranslations({ lang, namespace: "Pages.App.Metadata" });
+  const t = await getTranslations({ lang, namespace: "Metadata" });
 
   return {
-    title: `${t("title")}`,
+    title: {
+      template: `%s | ${
+        config.themeConfig?.metadata?.title || config.title || t(`title`)
+      }`,
+      default: `${
+        config.themeConfig?.metadata?.title || config.title || t(`title`)
+      }`,
+    },
   };
 }
 
@@ -36,9 +44,11 @@ export default async function LocaleLayout({
 
   return (
     <>
-      <main className="w-full h-full min-h-[calc(100dvh-64px)]">
-        <Suspense fallback={<LoaderRo13 time={-1} />}>{children}</Suspense>
-      </main>
+      <AppSidebar>
+        <main className="w-full h-full">
+          <Suspense fallback={<LoaderRo13 time={-1} />}>{children}</Suspense>
+        </main>
+      </AppSidebar>
     </>
   );
 }

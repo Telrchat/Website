@@ -84,7 +84,9 @@
       "Continue registration": "継続登録",
       "Username": "ユーザー名",
       "Verify your email": "Eメールの確認",
-      "Use the verification link sent to your email address": " あなたのEメールアドレスに送られた認証リンクを使用する"
+      "Use the verification link sent to your email address": " あなたのEメールアドレスに送られた認証リンクを使用する",
+      "Sign out": "サインアウト",
+      "Sign up": "サインアップ"
     },
     "Home": {
       "HeroTitle": {
