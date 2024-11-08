@@ -3,19 +3,19 @@
 # Please see the documentation for all configuration options:
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
-version: 2
-updates:
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "daily"
-    ignore:
-      - dependency-name: "eslint"
-    groups:
-      angular:
-        applies-to: version-updates
-        patterns:
-          - "tar"
-        update-types:
-          - "minor"
-          - "patch"
+# version: 2
+# updates:
+#   - package-ecosystem: "npm"
+#     directory: "/"
+#     schedule:
+#       interval: "daily"
+#     ignore:
+#       - dependency-name: "eslint"
+#     groups:
+#       angular:
+#         applies-to: version-updates
+#         patterns:
+#           - "tar"
+#         update-types:
+#           - "minor"
+#           - "patch"
